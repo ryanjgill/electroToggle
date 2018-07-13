@@ -1,0 +1,5 @@
+{
+    "port": "/dev/cu.usbmodem143421",
+    "board": "arduino:avr:uno",
+    "sketch": "electroToggle.ino"
+}
