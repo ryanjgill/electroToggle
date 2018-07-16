@@ -27,6 +27,15 @@ void toggleState() {
   digitalWrite(led, isActive);
 }
 
+// Delay with escape logic
+void await(long timeToWait) {
+  for(int j=0; j<timeToWait; j++) {
+    delay(1);
+
+    if(isActive == LOW) return;
+  }
+}
+
 void setup()
 {
   // Set both relay and led pins to OUTPUT
@@ -46,9 +55,9 @@ void loop()
   while(isActive) {
     // Turn on relay for on duration
     turnOn();
-    delay(onTime);
+    await(onTime);
     // Turn off relay for off duration
     turnOff();
-    delay(offTime);
+    await(offTime);
   } 
 }
