@@ -41,11 +41,14 @@ void setup()
   // Set both relay and led pins to OUTPUT
   pinMode(relay, OUTPUT);
   pinMode(led, OUTPUT);
+
   // Set power switch pin to INPUT
   pinMode(powerSwitch, INPUT);
+
   // Default power switch to HIGH state
   // Pressing switch brings it LOW
   digitalWrite(powerSwitch, HIGH); 
+
   // Attach an interrupt to the power switch pin
   attachInterrupt(digitalPinToInterrupt(powerSwitch), toggleState, FALLING);
 }
@@ -56,6 +59,7 @@ void loop()
     // Turn on relay for on duration
     turnOn();
     await(onTime);
+    
     // Turn off relay for off duration
     turnOff();
     await(offTime);
